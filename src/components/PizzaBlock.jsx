@@ -9,28 +9,18 @@ export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
   //Состояние выбора теста для пиццы
   const [doughPizza, setDoughPizza] = useState(0);
 
-  //Функция выбора размера (вешаем активный класс на выбранный размер)
-  const handleSizePizza = (i) => {
-    setSizePizza(i);
-  };
-
-  //Функция выбора теста для пиццы (вешаем активный класс на выбранное тесто)
-  const handleDoughPizza = (i) => {
-    setDoughPizza(i);
-  };
-
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imgUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((type, i) => (
+          {types.map((typeId) => (
             <li
-              className={doughPizza === i ? 'active' : ''}
-              onClick={() => handleDoughPizza(i)}
+              className={doughPizza === typeId ? 'active' : ''}
+              onClick={() => setDoughPizza(typeId)}
             >
-              {typeName[type]}
+              {typeName[typeId]}
             </li>
           ))}
         </ul>
@@ -38,7 +28,7 @@ export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
           {sizes.map((size, index) => (
             <li
               className={sizePizza === index ? 'active' : ''}
-              onClick={() => handleSizePizza(index)}
+              onClick={() => setSizePizza(index)}
             >
               {size} см.
             </li>
