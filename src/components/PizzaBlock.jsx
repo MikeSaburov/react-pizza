@@ -1,12 +1,15 @@
-export const PizzaBlock = ({ title, price, imgUrl, sizes }) => {
+export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
+  const typeName = ['тонкое', 'традиционное'];
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imgUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {types.map((type) => (
+            <li>{typeName[type]}</li>
+          ))}
         </ul>
         <ul>
           {sizes.map((size) => (
