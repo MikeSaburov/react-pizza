@@ -17,7 +17,9 @@ export const PizzaBlock = ({ name, price, imageUrl, sizes, types }) => {
         <ul>
           {types.map((typeId) => (
             <li
-              className={doughPizza === typeId ? 'active' : ''}
+              className={
+                doughPizza === typeId || types.length === 1 ? 'active' : ''
+              }
               onClick={() => setDoughPizza(typeId)}
             >
               {typeName[typeId]}
