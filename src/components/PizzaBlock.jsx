@@ -1,5 +1,23 @@
+import { useState } from 'react';
+
 export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
   const typeName = ['тонкое', 'традиционное'];
+
+  //Состояние размеров пицц
+  const [sizePizza, setSizePizza] = useState(0);
+
+  //Состояние выбора теста для пиццы
+  const [doughPizza, setDoughPizza] = useState(0);
+
+  //Функция выбора размера (вешаем активный класс на выбранный размер)
+  const handleSizePizza = (i) => {
+    setSizePizza(i);
+  };
+
+  //Функция выбора теста для пиццы (вешаем активный класс на выбранное тесто)
+  const handleDoughPizza = (i) => {
+    setDoughPizza(i);
+  };
 
   return (
     <div className="pizza-block">
@@ -7,13 +25,23 @@ export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((type) => (
-            <li>{typeName[type]}</li>
+          {types.map((type, i) => (
+            <li
+              className={doughPizza === i ? 'active' : ''}
+              onClick={() => handleDoughPizza(i)}
+            >
+              {typeName[type]}
+            </li>
           ))}
         </ul>
         <ul>
-          {sizes.map((size) => (
-            <li>{size} см.</li>
+          {sizes.map((size, index) => (
+            <li
+              className={sizePizza === index ? 'active' : ''}
+              onClick={() => handleSizePizza(index)}
+            >
+              {size} см.
+            </li>
           ))}
         </ul>
       </div>
