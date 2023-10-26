@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
+export const PizzaBlock = ({ name, price, imageUrl, sizes, types }) => {
   const typeName = ['тонкое', 'традиционное'];
 
   //Состояние размеров пицц
@@ -11,8 +11,8 @@ export const PizzaBlock = ({ title, price, imgUrl, sizes, types }) => {
 
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={imgUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+      <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
           {types.map((typeId) => (
