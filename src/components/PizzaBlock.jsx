@@ -1,4 +1,4 @@
-export const PizzaBlock = ({ title, price, imgUrl }) => {
+export const PizzaBlock = ({ title, price, imgUrl, sizes }) => {
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imgUrl} alt="Pizza" />
@@ -9,9 +9,9 @@ export const PizzaBlock = ({ title, price, imgUrl }) => {
           <li>традиционное</li>
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {sizes.map((size) => (
+            <li>{size} см.</li>
+          ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">

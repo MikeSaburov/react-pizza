@@ -23,6 +23,7 @@ function App() {
                 title={obj.name}
                 price={obj.price}
                 imgUrl={obj.imageUrl}
+                sizes={obj.sizes}
               />
             ))}
           </div>
