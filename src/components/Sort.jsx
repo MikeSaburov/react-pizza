@@ -4,6 +4,11 @@ export const Sort = () => {
   const [open, setOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState(0);
 
+  const handleSortItem = (i) => {
+    setSelectedSort(i);
+    setOpen(false);
+  };
+
   const popupTitle = ['популярности', 'цене', 'алфавиту'];
 
   return (
@@ -31,7 +36,7 @@ export const Sort = () => {
               <li
                 key={i}
                 className={selectedSort === i ? 'active' : ''}
-                onClick={() => setSelectedSort(i)}
+                onClick={() => handleSortItem(i)}
               >
                 {item}
               </li>
