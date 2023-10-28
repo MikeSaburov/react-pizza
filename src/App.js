@@ -4,9 +4,25 @@ import { Category } from './components/Category';
 import { Sort } from './components/Sort';
 import { PizzaBlock } from './components/PizzaBlock';
 
-import pizzas from './assets/pizza.json';
+//import pizzas from './assets/pizza.json';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  async function fetchItems() {
+    const response = await axios.get(
+      'https://a4b2f70c0a223b33.mokky.dev/items'
+    );
+    setItems(response.data);
+  }
+
+  useEffect(() => {
+    fetchItems();
+    console.log('Mount');
+  }, []);
+
   return (
     <div className="wrapper">
       <Header />
@@ -18,7 +34,7 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {pizzas.map((obj) => (
+            {items.map((obj) => (
               <PizzaBlock {...obj} key={obj.id} />
             ))}
           </div>
