@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom/client';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
+import { NotFound } from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <>
-        <App />
-      </>
-    ),
+    element: <App />,
+  },
+  {
+    path: 'not-found',
+    element: <NotFound />,
   },
 ]);
 
