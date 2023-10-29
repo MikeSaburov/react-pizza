@@ -38,7 +38,7 @@ function App() {
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             {isLoading
-              ? [...new Array(8)].map(() => <Skeleton />)
+              ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
               : items.map((obj) => <PizzaBlock {...obj} key={obj.id} />)}
           </div>
         </div>
