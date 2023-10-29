@@ -5,6 +5,7 @@ import { Sort } from './components/Sort';
 import { PizzaBlock } from './components/PizzaBlock';
 
 import axios from 'axios';
+import Skeleton from './components/PizzaBlock/Skeleton';
 import { useEffect, useState } from 'react';
 
 function App() {
