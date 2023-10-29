@@ -10,12 +10,15 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchItems() {
+    setIsLoading(true);
     const response = await axios.get(
       'https://a4b2f70c0a223b33.mokky.dev/items'
     );
     setItems(response.data);
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -34,9 +37,9 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {items.map((obj) => (
-              <PizzaBlock {...obj} key={obj.id} />
-            ))}
+            {isLoading
+              ? [...new Array(8)].map(() => <Skeleton />)
+              : items.map((obj) => <PizzaBlock {...obj} key={obj.id} />)}
           </div>
         </div>
       </div>
