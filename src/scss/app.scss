@@ -37,23 +37,24 @@ body {
     justify-content: space-between;
 
     @media (max-width: 1412px) {
-      flex-direction: column-reverse;
-
       .categories {
         margin-top: 30px;
-        width: 780px;
+        width: 100%;
         overflow: scroll;
 
         ul {
           width: 785px;
         }
       }
+      .sort {
+        b {
+          display: none;
+        }
+      }
     }
 
-    @media (max-width: 900px) {
-      .categories {
-        width: 500px;
-      }
+    @media (max-width: 1240px) {
+      flex-direction: column-reverse;
     }
 
     @media (max-width: 618px) {
