@@ -21,6 +21,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchItems();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
