@@ -12,6 +12,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<h1>Корзина</h1>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
