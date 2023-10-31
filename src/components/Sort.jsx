@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
-export const Sort = () => {
+export const Sort = ({ value, onChangeSort }) => {
   const [open, setOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState(0);
   const popupTitle = ['популярности', 'цене', 'алфавиту'];
-  const selectedSortName = popupTitle[selectedSort];
+  const selectedSortName = popupTitle[value];
 
   const handleSortItem = (i) => {
-    setSelectedSort(i);
+    onChangeSort(i);
     setOpen(false);
   };
 
@@ -35,7 +34,7 @@ export const Sort = () => {
             {popupTitle.map((item, i) => (
               <li
                 key={i}
-                className={selectedSort === i ? 'active' : ''}
+                className={value === i ? 'active' : ''}
                 onClick={() => handleSortItem(i)}
               >
                 {item}

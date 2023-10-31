@@ -10,20 +10,20 @@ export const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [categoryId, setCategoryId] = useState(0);
-
-  async function fetchItems() {
-    setIsLoading(true);
-    const response = await axios.get(
-      'https://a4b2f70c0a223b33.mokky.dev/items?category=' + categoryId
-    );
-    setItems(response.data);
-    setIsLoading(false);
-  }
+  const [sortType, setSortType] = useState(0);
 
   useEffect(() => {
-    fetchItems();
+    const fetchData = async () => {
+      setIsLoading(true);
+      const response = await axios.get(
+        'https://a4b2f70c0a223b33.mokky.dev/items?category=' + categoryId
+      );
+      setItems(response.data);
+      setIsLoading(false);
+    };
+    fetchData();
     window.scrollTo(0, 0); //Сброс скролла
-  }, [categoryId]);
+  }, [categoryId, sortType]);
 
   return (
     <div className="container">
@@ -32,7 +32,7 @@ export const Home = () => {
           value={categoryId}
           onClickCategories={(id) => setCategoryId(id)}
         />
-        <Sort />
+        <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
