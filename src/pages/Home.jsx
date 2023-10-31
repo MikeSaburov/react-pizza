@@ -9,11 +9,12 @@ import { useEffect, useState } from 'react';
 export const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [categoryId, setCategoryId] = useState(0);
 
   async function fetchItems() {
     setIsLoading(true);
     const response = await axios.get(
-      'https://a4b2f70c0a223b33.mokky.dev/items'
+      'https://a4b2f70c0a223b33.mokky.dev/items?category=' + categoryId
     );
     setItems(response.data);
     setIsLoading(false);
@@ -21,13 +22,16 @@ export const Home = () => {
 
   useEffect(() => {
     fetchItems();
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0); //Сброс скролла
+  }, [categoryId]);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Category />
+        <Category
+          value={categoryId}
+          onClickCategories={(id) => setCategoryId(id)}
+        />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
