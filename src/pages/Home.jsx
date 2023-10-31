@@ -18,10 +18,10 @@ export const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+
+      const category = categoryId > 0 ? `category=${categoryId}` : '';
       const response = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?${
-          categoryId > 0 ? `category=${categoryId}` : ''
-        }&sortBy=${sortType.sortProperty}`
+        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortType.sortProperty}`
       );
       setItems(response.data);
       setIsLoading(false);
