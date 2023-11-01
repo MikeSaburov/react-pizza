@@ -4,8 +4,8 @@ export const Sort = ({ value, onChangeSort }) => {
   const [open, setOpen] = useState(false);
   const popupTitle = [
     { name: 'популярности', sortProperty: '-rating' },
-    { name: 'меньшей цене', sortProperty: 'price' },
-    { name: 'большей цене', sortProperty: '-price' },
+    { name: 'недорогие', sortProperty: 'price' },
+    { name: 'дорогие', sortProperty: '-price' },
     { name: 'алфавиту', sortProperty: 'name' },
   ];
   //const selectedSortName = popupTitle[value].name;
