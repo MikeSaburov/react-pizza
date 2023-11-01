@@ -2,11 +2,15 @@
   position: relative;
 }
 .input {
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204, 0.4);
   border-radius: 4px;
   box-sizing: border-box;
   padding: 12px 45px;
   width: 300px;
+
+  &:focus {
+    border: 1px solid rgb(204, 204, 204, 0.7);
+  }
 }
 
 .icon {
