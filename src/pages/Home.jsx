@@ -17,7 +17,7 @@ export const Home = ({ searchValue }) => {
 
   const pizzas = items
     .filter((obj) => {
-      return obj.name.toLowerCase().includes(searchValue);
+      return obj.name.toLowerCase().includes(searchValue.toLowerCase());
     })
     .map((obj) => <PizzaBlock {...obj} key={obj.id} />);
   const skeletons = [...new Array(8)].map((_, index) => (
