@@ -1,7 +1,19 @@
 .root {
+  position: relative;
+}
+.input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  padding: 12px 20px;
+  padding: 12px 45px;
   width: 300px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  opacity: 0.3;
+  position: absolute;
+  left: 14px;
+  top: 10px;
 }
