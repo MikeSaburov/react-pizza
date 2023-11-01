@@ -21,3 +21,15 @@
   left: 14px;
   top: 10px;
 }
+
+.clear {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.3;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
