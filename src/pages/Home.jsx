@@ -5,6 +5,7 @@ import Skeleton from '../components/PizzaBlock/Skeleton';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Pagination } from '../components/Pagination';
 
 export const Home = ({ searchValue }) => {
   const [items, setItems] = useState([]);
@@ -50,6 +51,7 @@ export const Home = ({ searchValue }) => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+      <Pagination />
     </div>
   );
 };
