@@ -16,7 +16,7 @@ export const Home = ({ searchValue }) => {
   });
 
   const pizzas = items
-    .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase()))
+    // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
     .map((obj) => <PizzaBlock {...obj} key={obj.id} />);
 
   const skeletons = [...new Array(8)].map((_, index) => (
@@ -28,15 +28,16 @@ export const Home = ({ searchValue }) => {
       setIsLoading(true);
 
       const category = categoryId > 0 ? `category=${categoryId}` : '';
+      const search = searchValue ? `&name=*${searchValue}` : '';
       const response = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortType.sortProperty}`
+        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortType.sortProperty}${search}`
       );
       setItems(response.data);
       setIsLoading(false);
     };
     fetchData();
     window.scrollTo(0, 0); //Сброс скролла
-  }, [categoryId, sortType]);
+  }, [categoryId, sortType, searchValue]);
 
   return (
     <div className="container">
