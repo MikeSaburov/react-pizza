@@ -16,14 +16,6 @@ export const Home = ({ searchValue }) => {
     sortProperty: 'name',
   });
 
-  const pizzas = items
-    // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
-    .map((obj) => <PizzaBlock {...obj} key={obj.id} />);
-
-  const skeletons = [...new Array(8)].map((_, index) => (
-    <Skeleton key={index} />
-  ));
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -31,7 +23,7 @@ export const Home = ({ searchValue }) => {
       const category = categoryId > 0 ? `category=${categoryId}` : '';
       const search = searchValue ? `&name=*${searchValue}` : '';
       const response = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortType.sortProperty}${search}`
+        `https://a4b2f70c0a223b33.mokky.dev/items?&${category}&sortBy=${sortType.sortProperty}${search}`
       );
       setItems(response.data);
       setIsLoading(false);
@@ -39,6 +31,14 @@ export const Home = ({ searchValue }) => {
     fetchData();
     window.scrollTo(0, 0); //Сброс скролла
   }, [categoryId, sortType, searchValue]);
+
+  const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
+
+  // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
+
+  const skeletons = [...new Array(8)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
 
   return (
     <div className="container">
