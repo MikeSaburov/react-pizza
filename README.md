@@ -3,10 +3,10 @@
 ## Стек технологий
 
 - Redux Toolkit
-- React Router
+  [x] React Router
 - Axios + Fetch
 - React Hooks
-- React Context
+  [x] React Context
 - Prettier
 - SCSS
 - Lodash
