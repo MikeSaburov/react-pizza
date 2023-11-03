@@ -4,10 +4,12 @@ import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Pagination } from '../components/Pagination';
+import { SearchContext } from '../App';
 
-export const Home = ({ searchValue }) => {
+export const Home = () => {
+  const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [categoryId, setCategoryId] = useState(0);
