@@ -7,6 +7,6 @@
 - Axios + Fetch
 - [x] React Hooks
 - [x] React Context
-- Prettier
-- SCSS
+- [x] Prettier
+- [x] SCSS
 - Lodash
