@@ -42,14 +42,14 @@ export const Home = () => {
       setIsLoading(false);
     };
     fetchData();
-    window.scrollTo(0, 0); //Сброс скролла
+    //window.scrollTo(0, 0); //Сброс скролла
   }, [categoryId, sortType, searchValue, currentPage]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
 
   // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
 
-  const skeletons = [...new Array(8)].map((_, index) => (
+  const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
