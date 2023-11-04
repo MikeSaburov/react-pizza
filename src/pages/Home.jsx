@@ -15,6 +15,9 @@ export const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
+
   const { categoryId, sort } = useSelector((state) => state.filter);
   const sortType = sort.sortProperty;
 
@@ -31,14 +34,16 @@ export const Home = () => {
       const category = categoryId > 0 ? `category=${categoryId}` : '';
       const search = searchValue ? `&name=*${searchValue}` : '';
       const response = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?&${category}&sortBy=${sortType}${search}`
+        `https://a4b2f70c0a223b33.mokky.dev/items?page=${currentPage}&${category}&limit=4&sortBy=${sortType}${search}`
       );
-      setItems(response.data);
+      setItems(response.data.items);
+      setCurrentPage(response.data.meta.current_page);
+      setTotalPage(response.data.meta.total_pages);
       setIsLoading(false);
     };
     fetchData();
     window.scrollTo(0, 0); //Сброс скролла
-  }, [categoryId, sortType, searchValue]);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
 
@@ -56,7 +61,10 @@ export const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
-      <Pagination />
+      <Pagination
+        totalPage={totalPage}
+        onChangePage={(num) => setCurrentPage(num)}
+      />
     </div>
   );
 };
