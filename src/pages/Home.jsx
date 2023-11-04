@@ -14,10 +14,6 @@ export const Home = () => {
   const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [sortType, setSortType] = useState({
-  //   name: 'популярности',
-  //   sortProperty: 'name',
-  // });
 
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortType = useSelector((state) => state.filter.sort.sortProperty);
