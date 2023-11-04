@@ -15,8 +15,9 @@ export const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const categoryId = useSelector((state) => state.filter.categoryId);
-  const sortType = useSelector((state) => state.filter.sort.sortProperty);
+  const { categoryId, sort } = useSelector((state) => state.filter);
+  const sortType = sort.sortProperty;
+
   const dispatch = useDispatch();
 
   const onClickCategories = (id) => {
