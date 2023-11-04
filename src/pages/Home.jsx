@@ -7,16 +7,25 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { Pagination } from '../components/Pagination';
 import { SearchContext } from '../App';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [categoryId, setCategoryId] = useState(0); //***
+  // const [categoryId, setCategoryId] = useState(0); //***
   const [sortType, setSortType] = useState({
     name: 'популярности',
     sortProperty: 'name',
   });
+
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const dispatch = useDispatch();
+
+  const onClickCategories = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,10 +54,7 @@ export const Home = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Category
-          value={categoryId}
-          onClickCategories={(id) => setCategoryId(id)}
-        />
+        <Category value={categoryId} onClickCategories={onClickCategories} />
         <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
