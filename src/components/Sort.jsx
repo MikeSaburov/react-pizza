@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Sort = ({ value, onChangeSort }) => {
+export const Sort = () => {
+  const sortValue = useSelector((state) => state.filter.sort);
+  const dispatch = useDispatch;
   const [open, setOpen] = useState(false);
   const popupTitle = [
     { name: 'популярности', sortProperty: '-rating' },
@@ -11,7 +14,7 @@ export const Sort = ({ value, onChangeSort }) => {
   //const selectedSortName = popupTitle[value].name;
 
   const handleSortItem = (i) => {
-    onChangeSort(i);
+    //onChangeSort(i);
     setOpen(false);
   };
 
@@ -31,7 +34,7 @@ export const Sort = ({ value, onChangeSort }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{value.name}</span>
+        <span onClick={() => setOpen(!open)}>{sortValue.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -40,7 +43,7 @@ export const Sort = ({ value, onChangeSort }) => {
               <li
                 key={i}
                 className={
-                  value.sortProperty === obj.sortProperty ? 'active' : ''
+                  sortValue.sortProperty === obj.sortProperty ? 'active' : ''
                 }
                 onClick={() => handleSortItem(obj)}
               >
