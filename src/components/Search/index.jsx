@@ -4,7 +4,7 @@ import { SearchContext } from '../../App';
 
 export const Search = () => {
   const { searchValue, setSearchValue } = useContext(SearchContext);
-  const inputRef = useRef('dgdgd');
+  const inputRef = useRef();
 
   const onClickClear = () => {
     setSearchValue('');
