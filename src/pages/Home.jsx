@@ -30,6 +30,15 @@ export const Home = () => {
     dispatch(setCategoryId(id));
   };
 
+  // параметры url парсим в объект
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      console.log(params);
+    }
+  }, []);
+
+  //Запрос с backend
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
