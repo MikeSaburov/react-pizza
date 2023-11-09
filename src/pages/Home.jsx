@@ -10,6 +10,7 @@ import { Pagination } from '../components/Pagination';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redux/slices/filterSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
@@ -21,6 +22,7 @@ export const Home = () => {
 
   const { categoryId, sort } = useSelector((state) => state.filter);
   const sortType = sort.sortProperty;
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -53,6 +55,8 @@ export const Home = () => {
       categoryId,
       currentPage,
     });
+
+    navigate(`?${queryString}`);
   }, [categoryId, sortType, currentPage]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
