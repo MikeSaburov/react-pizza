@@ -4,6 +4,7 @@ import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 
 import axios from 'axios';
+import qs from 'qs';
 import { useContext, useEffect, useState } from 'react';
 import { Pagination } from '../components/Pagination';
 import { SearchContext } from '../App';
@@ -44,6 +45,15 @@ export const Home = () => {
     fetchData();
     //window.scrollTo(0, 0); //Сброс скролла
   }, [categoryId, sortType, searchValue, currentPage]);
+
+  //Парсим параметры запроса в строку
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sortType: sortType,
+      categoryId,
+      currentPage,
+    });
+  }, [categoryId, sortType, currentPage]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
 
