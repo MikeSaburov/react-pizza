@@ -17,7 +17,7 @@ export const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
   const { categoryId, sort } = useSelector((state) => state.filter);
