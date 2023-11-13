@@ -56,6 +56,8 @@ export const Home = () => {
       sortProperty: sortType,
       categoryId,
     });
+
+    navigate(`?${queryString}`);
   }, [categoryId, sortType]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
