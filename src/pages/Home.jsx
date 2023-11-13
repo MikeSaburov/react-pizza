@@ -51,6 +51,13 @@ export const Home = () => {
     //window.scrollTo(0, 0); //Сброс скролла
   }, [categoryId, sortType, searchValue]);
 
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sortProperty: sortType,
+      categoryId,
+    });
+  }, [categoryId, sortType]);
+
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
 
   // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
