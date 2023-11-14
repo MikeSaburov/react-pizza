@@ -29,6 +29,7 @@ export const Sort = () => {
 
     document.body.addEventListener('click', handleClickOutside);
 
+    //Функция будет тогда отрабатывать если кмопонент размонтировался(например ушел со страницы)
     return () => {
       document.body.removeEventListener('click', handleClickOutside);
     };
