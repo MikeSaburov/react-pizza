@@ -7,6 +7,12 @@ const typeName = ['тонкое', 'традиционное'];
 export const PizzaBlock = ({ id, name, price, imageUrl, sizes, types }) => {
   const dispatch = useDispatch();
 
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
+
+  const addedCount = cartItem ? cartItem.count : 0;
+
   //Состояние размеров пицц
   const [sizePizza, setSizePizza] = useState(0);
 
@@ -76,7 +82,7 @@ export const PizzaBlock = ({ id, name, price, imageUrl, sizes, types }) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>0</i>
+          {addedCount > 0 && <i>{addedCount}</i>}
         </button>
       </div>
     </div>
