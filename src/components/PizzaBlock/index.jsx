@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
 
+const typeName = ['тонкое', 'традиционное'];
+
 export const PizzaBlock = ({ id, name, price, imageUrl, sizes, types }) => {
   const dispatch = useDispatch();
-  const typeName = ['тонкое', 'традиционное'];
 
   //Состояние размеров пицц
   const [sizePizza, setSizePizza] = useState(0);
@@ -12,13 +13,14 @@ export const PizzaBlock = ({ id, name, price, imageUrl, sizes, types }) => {
   //Состояние выбора теста для пиццы
   const [doughPizza, setDoughPizza] = useState(0);
 
+  //Формируем массив пиццы для добавления
   const onClickAdd = () => {
     const item = {
       id,
       name,
       price,
       imageUrl,
-      type: doughPizza,
+      type: typeName[doughPizza],
       size: sizePizza,
     };
 
