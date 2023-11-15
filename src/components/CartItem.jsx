@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
-export const CartItem = ({ id, name, imageUrl, price, count, type }) => {
+export const CartItem = ({ id, name, imageUrl, price, count, type, size }) => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
   const onClickPlus = () => {
@@ -30,7 +30,9 @@ export const CartItem = ({ id, name, imageUrl, price, count, type }) => {
       </div>
       <div className="cart__item-info">
         <h3>{name}</h3>
-        <p>{type}, 26 см.</p>
+        <p>
+          {type}, {size} см.
+        </p>
       </div>
       <div className="cart__item-count">
         <div
