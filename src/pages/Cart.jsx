@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CartItem } from '../components/CartItem';
 import { clearItems } from '../redux/slices/cartSlice';
+import { CartEmpty } from '../components/CartEmpty';
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,11 @@ export const Cart = () => {
       dispatch(clearItems());
     }
   };
+
+  //если корзина пустая
+  if (!totalPrice) {
+    return <CartEmpty />;
+  }
 
   return (
     <div className="container container--cart">
