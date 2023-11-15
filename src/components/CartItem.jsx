@@ -1,10 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
 export const CartItem = ({ id, name, imageUrl, price, count, type }) => {
   const dispatch = useDispatch();
-
+  const { items } = useSelector((state) => state.cart);
   const onClickPlus = () => {
     dispatch(
       addItem({
