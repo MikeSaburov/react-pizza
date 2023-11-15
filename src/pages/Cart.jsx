@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { CartItem } from '../components/CartItem';
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -82,7 +83,9 @@ export const Cart = () => {
             <span>Очистить корзину</span>
           </div>
         </div>
-        <div className="content__items">//Карточка пиццы</div>
+        <div className="content__items">
+          <CartItem />
+        </div>
         <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
