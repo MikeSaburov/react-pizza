@@ -33,11 +33,11 @@ export const Home = () => {
         `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
       );
       setItems(res.data);
-      setIsLoading(false);
       console.log('Загрузка успешно!');
     } catch (error) {
-      setIsLoading(false);
       console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
     window.scrollTo(0, 0);
   };
