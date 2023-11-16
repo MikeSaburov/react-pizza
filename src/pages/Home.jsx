@@ -22,21 +22,22 @@ export const Home = () => {
     dispatch(setCategoryId(id));
   };
 
+  const fetchPizzas = async () => {
+    setIsLoading(true);
+    const sortBy = sort.sortProperty;
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
+    const search = searchValue ? `&name=*${searchValue}` : '';
+    const response = await axios.get(
+      `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
+    );
+    setItems(response.data);
+    setIsLoading(false);
+    window.scrollTo(0, 0);
+  };
+
   //Запрос с backend
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const sortBy = sort.sortProperty;
-      const category = categoryId > 0 ? `category=${categoryId}` : '';
-      const search = searchValue ? `&name=*${searchValue}` : '';
-      const response = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
-      );
-      setItems(response.data);
-      setIsLoading(false);
-    };
-    fetchData();
-    //window.scrollTo(0, 0); //Сброс скролла
+    fetchPizzas();
   }, [categoryId, sort.sortProperty, searchValue]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
