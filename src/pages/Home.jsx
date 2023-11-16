@@ -22,16 +22,23 @@ export const Home = () => {
     dispatch(setCategoryId(id));
   };
 
+  //Функция запроса пицц с сервера
   const fetchPizzas = async () => {
     setIsLoading(true);
     const sortBy = sort.sortProperty;
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&name=*${searchValue}` : '';
-    const response = await axios.get(
-      `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
-    );
-    setItems(response.data);
-    setIsLoading(false);
+    try {
+      const res = await axios.get(
+        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
+      );
+      setItems(res.data);
+      setIsLoading(false);
+      console.log('Загрузка успешно!');
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error.message);
+    }
     window.scrollTo(0, 0);
   };
 
@@ -41,7 +48,6 @@ export const Home = () => {
   }, [categoryId, sort.sortProperty, searchValue]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
-
   // .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase())) Реализация поиска локально
 
   const skeletons = [...new Array(4)].map((_, index) => (
