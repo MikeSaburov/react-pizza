@@ -55,9 +55,22 @@ export const Home = () => {
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {status === 'loading' ? skeletons : pizzas}
-      </div>
+      {status === 'error' ? (
+        <div class="cart cart--empty">
+          <h2>
+            Ошибка <icon>🙁</icon>
+          </h2>
+          <p>
+            Не могу загрузить пиццы
+            <br />
+            Попробуйте снова
+          </p>
+        </div>
+      ) : (
+        <div className="content__items">
+          {status === 'loading' ? skeletons : pizzas}
+        </div>
+      )}
     </div>
   );
 };
