@@ -30,6 +30,7 @@ const pizzaSlice = createSlice({
     [fetchPizzas.pending]: (state) => {
       state.status = 'loading';
       console.log('Идет отправка запроса');
+      state.items = [];
     },
     [fetchPizzas.fulfilled]: (state, action) => {
       state.items = action.payload;
