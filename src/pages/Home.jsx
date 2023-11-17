@@ -3,12 +3,11 @@ import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 
-import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redux/slices/filterSlice';
-import { setPizza } from '../redux/slices/pizzaSlice';
+import { fetchPizzas } from '../redux/slices/pizzaSlice';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
@@ -24,17 +23,22 @@ export const Home = () => {
   };
 
   //Функция запроса пицц с сервера
-  const fetchPizzas = async () => {
+  const getPizzas = async () => {
     setIsLoading(true);
     const sortBy = sort.sortProperty;
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&name=*${searchValue}` : '';
     try {
-      const { data } = await axios.get(
-        `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
+      // const { data } = await axios.get(
+      //   `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
+      // );
+      dispatch(
+        fetchPizzas({
+          sortBy,
+          category,
+          search,
+        })
       );
-      dispatch(setPizza(data));
-      console.log('Загрузка успешно!');
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -45,7 +49,7 @@ export const Home = () => {
 
   //Запрос с backend
   useEffect(() => {
-    fetchPizzas();
+    getPizzas();
   }, [categoryId, sort.sortProperty, searchValue]);
 
   const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
