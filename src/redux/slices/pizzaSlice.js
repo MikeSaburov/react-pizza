@@ -8,7 +8,9 @@ const pizzaSlice = createSlice({
   name: 'pizza',
   initialState,
   reducers: {
-    setPizza(state, action) {},
+    setPizza(state, action) {
+      state.items = action.payload;
+    },
   },
 });
 

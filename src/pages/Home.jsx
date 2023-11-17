@@ -8,13 +8,14 @@ import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redux/slices/filterSlice';
+import { setPizza } from '../redux/slices/pizzaSlice';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
-  const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { categoryId, sort } = useSelector((state) => state.filter);
+  const { items } = useSelector((state) => state.pizza);
 
   const dispatch = useDispatch();
 
@@ -29,10 +30,10 @@ export const Home = () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&name=*${searchValue}` : '';
     try {
-      const res = await axios.get(
+      const { data } = await axios.get(
         `https://a4b2f70c0a223b33.mokky.dev/items?${category}&sortBy=${sortBy}${search}`
       );
-      setItems(res.data);
+      dispatch(setPizza(data));
       console.log('Загрузка успешно!');
     } catch (error) {
       console.log(error.message);
