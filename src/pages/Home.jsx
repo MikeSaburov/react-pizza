@@ -2,6 +2,7 @@ import { Category } from '../components/Category';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
+import imgError from '../assets/img/error404.png';
 
 import { useContext, useEffect } from 'react';
 import { SearchContext } from '../App';
@@ -56,7 +57,7 @@ export const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (
-        <div class="cart cart--empty">
+        <div class="content__error-info">
           <h2>
             Ошибка <icon>🙁</icon>
           </h2>
@@ -65,6 +66,7 @@ export const Home = () => {
             <br />
             Попробуйте снова
           </p>
+          <img width={450} height={450} src={imgError} alt="Ошибка" />
         </div>
       ) : (
         <div className="content__items">
