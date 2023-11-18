@@ -4,15 +4,13 @@ import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import imgError from '../assets/img/error404.png';
 
-import { useContext, useEffect } from 'react';
-import { SearchContext } from '../App';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 
 export const Home = () => {
-  const { searchValue } = useContext(SearchContext);
-  const { categoryId, sort } = useSelector(selectFilter);
+  const { categoryId, sort, searchValue } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
   const dispatch = useDispatch();
