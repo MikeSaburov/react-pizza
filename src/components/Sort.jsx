@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSort } from '../redux/slices/filterSlice';
-import { selectSort } from '../redux/slices/filterSlice';
+import { setSort, selectSort } from '../redux/slices/filterSlice';
 
 const popupTitle = [
   { name: 'популярности', sortProperty: '-rating' },
