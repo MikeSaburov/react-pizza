@@ -57,9 +57,9 @@ export const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (
-        <div class="content__error-info">
+        <div className="content__error-info">
           <h2>
-            Ошибка <icon>🙁</icon>
+            Ошибка <span>🙁</span>
           </h2>
           <p>
             К сожалению, не удалось загрузить пиццы.
