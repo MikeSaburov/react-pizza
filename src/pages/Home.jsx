@@ -8,12 +8,12 @@ import { useContext, useEffect } from 'react';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redux/slices/filterSlice';
-import { fetchPizzas, selectPizzaItems } from '../redux/slices/pizzaSlice';
+import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
   const { categoryId, sort } = useSelector((state) => state.filter);
-  const { items, status } = useSelector(selectPizzaItems);
+  const { items, status } = useSelector(selectPizzaData);
 
   const dispatch = useDispatch();
 
