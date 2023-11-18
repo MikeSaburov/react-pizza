@@ -7,12 +7,12 @@ import imgError from '../assets/img/error404.png';
 import { useContext, useEffect } from 'react';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryId } from '../redux/slices/filterSlice';
+import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 
 export const Home = () => {
   const { searchValue } = useContext(SearchContext);
-  const { categoryId, sort } = useSelector((state) => state.filter);
+  const { categoryId, sort } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
   const dispatch = useDispatch();
