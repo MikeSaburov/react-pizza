@@ -2,7 +2,7 @@ import React from 'react';
 
 export const FullPizza = () => {
   return (
-    <div>
+    <div className="container">
       <img src="" alt="Image" />
       <h2>Маргарита</h2>
       <p>
