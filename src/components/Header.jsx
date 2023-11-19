@@ -26,8 +26,8 @@ export const Header = () => {
         </Link>
         {pathname !== '/cart' && <Search />}
         <Link to="/cart">
-          {pathname !== '/cart' && (
-            <div className="header__cart">
+          <div className="header__cart">
+            {pathname !== '/cart' && (
               <div className="button button--cart">
                 <span>{totalPrice} ₽</span>
                 <div className="button__delimiter"></div>
@@ -62,8 +62,8 @@ export const Header = () => {
                 </svg>
                 <span>{totalCount}</span>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </Link>
       </div>
     </div>
