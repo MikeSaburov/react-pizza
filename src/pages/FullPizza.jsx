@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export const FullPizza = () => {
-  const [pizza, setPizza] = useState({});
+  const [pizza, setPizza] = useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,6 +20,10 @@ export const FullPizza = () => {
 
     fetchPizza();
   }, []);
+
+  if (!pizza) {
+    return 'Загрузка...';
+  }
 
   return (
     <div className="container">
