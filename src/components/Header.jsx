@@ -24,7 +24,7 @@ export const Header = () => {
             </div>
           </div>
         </Link>
-        <Search />
+        {pathname !== '/cart' && <Search />}
         <Link to="/cart">
           {pathname !== '/cart' && (
             <div className="header__cart">
