@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const { categoryId, sort, searchValue } = useSelector(selectFilter);
@@ -41,7 +42,11 @@ export const Home = () => {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue]);
 
-  const pizzas = items.map((obj) => <PizzaBlock {...obj} key={obj.id} />);
+  const pizzas = items.map((obj) => (
+    <Link key={obj.id} to={`/pizza/${obj.id}`}>
+      <PizzaBlock {...obj} />
+    </Link>
+  ));
 
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
