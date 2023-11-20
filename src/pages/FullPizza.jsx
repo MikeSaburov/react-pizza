@@ -15,6 +15,7 @@ export const FullPizza = () => {
         );
         setPizza(data);
       } catch (error) {
+        alert('Такой пиццы не существует!');
         console.log('Ошибка пр получении пиццы');
         navigate('/');
       }
