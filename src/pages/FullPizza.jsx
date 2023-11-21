@@ -11,7 +11,7 @@ export const FullPizza = () => {
     async function fetchPizza() {
       try {
         const { data } = await axios.get(
-          `https://a4b2f70c0a223b33.mokky.dev/items/` + id
+          `https://a4b2f70c0a223b33.mokky.dev/items/${id}`
         );
         setPizza(data);
       } catch (error) {
