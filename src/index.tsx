@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import App from './App.tsx';
+import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const rootElem = document.getElementById('root');
