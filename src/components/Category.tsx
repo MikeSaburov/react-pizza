@@ -1,4 +1,14 @@
-export const Category = ({ value, onClickCategories }) => {
+import React from 'react';
+
+type CategoryProps = {
+  value: number;
+  onClickCategories: any;
+};
+
+export const Category: React.FC<CategoryProps> = ({
+  value,
+  onClickCategories,
+}) => {
   const categories = [
     'Все',
     'Мясные',
