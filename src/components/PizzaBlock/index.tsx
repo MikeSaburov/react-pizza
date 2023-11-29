@@ -4,7 +4,23 @@ import { addItem, selectCartItemById } from '../../redux/slices/cartSlice';
 
 const typeName = ['тонкое', 'традиционное'];
 
-export const PizzaBlock = ({ id, name, price, imageUrl, sizes, types }) => {
+type PizzaBlockProps = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  sizes: number[];
+  types: number[];
+};
+
+export const PizzaBlock: React.FC<PizzaBlockProps> = ({
+  id,
+  name,
+  price,
+  imageUrl,
+  sizes,
+  types,
+}) => {
   const dispatch = useDispatch();
 
   const cartItem = useSelector(selectCartItemById(id));
