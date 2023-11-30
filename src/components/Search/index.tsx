@@ -25,7 +25,7 @@ export const Search: React.FC = () => {
   );
 
   const onChangeInput = useCallback(
-    (event: any) => {
+    (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
       updateSearchValue(event.target.value);
     },
