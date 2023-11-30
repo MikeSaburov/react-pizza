@@ -8,7 +8,7 @@ export const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
     dispatch(setSearchValue(''));
