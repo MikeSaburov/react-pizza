@@ -1,3 +1,4 @@
+import React from 'react';
 import { Category } from '../components/Category';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
@@ -10,13 +11,13 @@ import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { Link } from 'react-router-dom';
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const { categoryId, sort, searchValue } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
   const dispatch = useDispatch();
 
-  const onClickCategories = (id) => {
+  const onClickCategories = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
@@ -27,6 +28,7 @@ export const Home = () => {
     const search = searchValue ? `&name=*${searchValue}` : '';
 
     dispatch(
+      // @ts-ignore
       fetchPizzas({
         sortBy,
         category,
