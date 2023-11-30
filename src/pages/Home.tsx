@@ -44,7 +44,7 @@ export const Home: React.FC = () => {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue]);
 
-  const pizzas = items.map((obj) => (
+  const pizzas = items.map((obj: any) => (
     <Link key={obj.id} to={`/pizza/${obj.id}`}>
       <PizzaBlock {...obj} />
     </Link>
