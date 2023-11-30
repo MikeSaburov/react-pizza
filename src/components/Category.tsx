@@ -5,19 +5,19 @@ type CategoryProps = {
   onClickCategories: (i: number) => void;
 };
 
+const categories = [
+  'Все',
+  'Мясные',
+  'Вегетарианские',
+  'Гриль',
+  'Острые',
+  'Закрытые',
+];
+
 export const Category: React.FC<CategoryProps> = ({
   value,
   onClickCategories,
 }) => {
-  const categories = [
-    'Все',
-    'Мясные',
-    'Вегетарианские',
-    'Гриль',
-    'Острые',
-    'Закрытые',
-  ];
-
   return (
     <div className="categories">
       <ul>
