@@ -1,21 +1,22 @@
 import React from 'react';
 import { Category } from '../components/Category';
-import { Sort } from '../components/Sort';
+import { SortPopup } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import imgError from '../assets/img/error404.png';
 
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../redux/store';
 
 export const Home: React.FC = () => {
   const { categoryId, sort, searchValue } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onClickCategories = (id: number) => {
     dispatch(setCategoryId(id));
@@ -28,7 +29,6 @@ export const Home: React.FC = () => {
     const search = searchValue ? `&name=*${searchValue}` : '';
 
     dispatch(
-      // @ts-ignore
       fetchPizzas({
         sortBy,
         category,
@@ -58,7 +58,7 @@ export const Home: React.FC = () => {
     <div className="container">
       <div className="content__top">
         <Category value={categoryId} onClickCategories={onClickCategories} />
-        <Sort />
+        <SortPopup />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (
