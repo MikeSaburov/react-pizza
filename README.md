@@ -8,5 +8,5 @@
 - [x] React Router
 - [x] React Context
 - [x] Lodash
-- Redux Toolkit
-- Axios + Fetch
+- [x] Redux Toolkit
+- [x] Axios + Fetch
