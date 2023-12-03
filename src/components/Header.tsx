@@ -4,7 +4,6 @@ import { Search } from './Search';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/slices/cartSlice';
 import React from 'react';
-import { log } from 'console';
 
 export const Header = () => {
   const { items, totalPrice } = useSelector(selectCart);
