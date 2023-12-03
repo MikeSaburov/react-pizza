@@ -74,23 +74,6 @@ const pizzaSlice = createSlice({
       console.log('Ошибка запроса');
     });
   },
-  // extraReducers: {
-  //   [fetchPizzas.pending]: (state) => {
-  //     state.status = 'loading';
-  //     console.log('Идет отправка запроса');
-  //     state.items = [];
-  //   },
-  //   [fetchPizzas.fulfilled]: (state, action) => {
-  //     state.items = action.payload;
-  //     state.status = 'success';
-  //     console.log('Загрузка успешно! Все ОК');
-  //   },
-  //   [fetchPizzas.rejected]: (state) => {
-  //     state.items = [];
-  //     state.status = 'error';
-  //     console.log('Ошибка запроса');
-  //   },
-  // },
 });
 
 export const selectPizzaData = (state: RootState) => state.pizza;
