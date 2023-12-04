@@ -8,9 +8,15 @@ import { Home } from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 //import FullPizza from './pages/FullPizza';
 
-const Cart = React.lazy(() => import('./pages/Cart'));
-const FullPizza = React.lazy(() => import('./pages/FullPizza'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
+const Cart = React.lazy(
+  () => import(/* webpackChunkName: 'Cart' */ './pages/Cart')
+);
+const FullPizza = React.lazy(
+  () => import(/* webpackChunkName: 'FullPizza' */ './pages/FullPizza')
+);
+const NotFound = React.lazy(
+  () => import(/* webpackChunkName: 'NotFound' */ './pages/NotFound')
+);
 
 function App() {
   return (
