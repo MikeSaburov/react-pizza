@@ -21,7 +21,7 @@ function App() {
           <Route
             path="/cart"
             element={
-              <React.Suspense fallback={<div>Загрузка...</div>}>
+              <React.Suspense fallback={<div>Идет загрузка Корзины...</div>}>
                 <Cart />
               </React.Suspense>
             }
