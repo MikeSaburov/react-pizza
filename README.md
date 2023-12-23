@@ -1,6 +1,6 @@
 # React Pizza
 
-DEMO](mikesaburov.github.io/react-pizza)
+[DEMO](mikesaburov.github.io/react-pizza)
 
 Учебный проект. Изначально был сделан на JS, в дальнейшем был переписан на TS.
 
