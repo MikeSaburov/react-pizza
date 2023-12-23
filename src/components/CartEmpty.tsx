@@ -14,7 +14,7 @@ export const CartEmpty: React.FC = () => {
         Для того, чтобы заказать пиццу, перейди на главную страницу.
       </p>
       <img src={emptyCart} alt="Empty cart" />
-      <Link to="/" className="button button--black">
+      <Link to="/react-pizza" className="button button--black">
         Вернуться назад
       </Link>
     </div>
