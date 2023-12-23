@@ -13,6 +13,13 @@ const Cart: React.FC = () => {
     return sum + item.count;
   }, 0);
 
+  const totalPriceBasket = items.reduce((sum, item) => {
+    return sum + item.price * item.count;
+  }, 0);
+
+  console.log('Пиццы:', items);
+  console.log('Полная стоимость:', totalPrice);
+
   const onClickClear = () => {
     if (window.confirm('Очистить корзину?')) {
       dispatch(clearItems());
@@ -114,7 +121,7 @@ const Cart: React.FC = () => {
             </span>
             <span>
               {' '}
-              Сумма заказа: <b>{totalPrice} ₽</b>{' '}
+              Сумма заказа: <b>{totalPriceBasket} ₽</b>{' '}
             </span>
           </div>
           <div className="cart__bottom-buttons">
